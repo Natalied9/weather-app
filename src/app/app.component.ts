@@ -48,11 +48,11 @@ export class AppComponent {
   weatherData = mockData;
   searchResult: any; 
   favoriteCities = []; //an empty array we will add onto with a user click
+  city: string = "";
   
-
-    constructor( public weather$: WeatherService ){ //
+    constructor( public weather$: WeatherService ){ 
           console.log(this.weather$.foo);
-          this.weather$.getWeatherData()
+          this.weather$.getWeatherData( this.city )
           .subscribe(
               data => {
                   this.searchResult = data
@@ -64,6 +64,17 @@ export class AppComponent {
     addFavoriteCity(city) {
         this.favoriteCities.push(city)
         console.log(this.favoriteCities, city);
+    }
+    //in this function we are using two-way data binding for the search bar
+    citySearch(searchValue) { 
+        console.log("hit", searchValue)
+        this.weather$.getWeatherData( searchValue )
+        .subscribe(
+            data => {
+                this.searchResult = data.current_observation
+                console.log("response", data)
+            }
+        )
     }
     
 }

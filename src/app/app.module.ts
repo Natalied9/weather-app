@@ -7,7 +7,9 @@ import { WeatherService } from './weather.service';
 import { expressService } from './express-service';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule, NgModel} from '@angular/forms';
+import {FormsModule, 
+        ReactiveFormsModule, 
+        NgModel } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +21,8 @@ import { FormsModule, ReactiveFormsModule, NgModel} from '@angular/forms';
     MdCardModule,
     HttpModule,
     MdInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [WeatherService,
   expressService],

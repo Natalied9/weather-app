@@ -1,6 +1,14 @@
 <md-toolbar color="primary"> {{ title }} </md-toolbar>
-<input type="text" placeholder="Search Here">
-  <button>Search</button>
+
+    <md-card>
+       <form class="example-form">
+            <md-form-field class="example-full-width">
+                 <input  #search [(ngModel)]="city" mdInput 
+            placeholder="Search for A City"
+            (keyup.enter)="citySearch( search.value )">
+            </md-form-field> 
+        </form>
+    </md-card>
 
 <div id=main-grid> <!--this sets up the grid layout for columns *VIP-->
 
@@ -15,11 +23,11 @@
     </div>
         
     <div id="center-col"> CENTER Col List of Cities
-        <md-form-field class="example-full-width">
-        <input [(ngModel)]="city" mdInput placeholder="Search for a city">
-        
-        </md-form-field> 
-        
+
+     
+
+ 
+    
         <md-card class="city-card" 
         *ngFor="let city of weatherData"
         (click)="addFavoriteCity(city)">
