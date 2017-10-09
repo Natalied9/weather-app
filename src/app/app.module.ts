@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdToolbarModule,
-        MdCardModule } from '@angular/material';
+        MdCardModule, MdInputModule } from '@angular/material';
 import { WeatherService } from './weather.service';
 import { expressService } from './express-service';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-
+import { FormsModule, ReactiveFormsModule, NgModel} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +17,9 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MdToolbarModule,
     MdCardModule,
-    HttpModule
+    HttpModule,
+    MdInputModule,
+    FormsModule
   ],
   providers: [WeatherService,
   expressService],
