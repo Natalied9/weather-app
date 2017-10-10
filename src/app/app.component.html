@@ -3,24 +3,21 @@
     <md-card>
        <form class="example-form">
             <md-form-field class="example-full-width">
-                 <input  #search [(ngModel)]="city" mdInput 
+                 <input #search [(ngModel)]="city" [ngModelOptions]="{standalone: true}" mdInput 
             placeholder="Search for A City"
-           (keyup.enter)="citySearch( search.value )"
-            >
-            
+           (keyup.enter)="citySearch( search.value )"/>
             </md-form-field> 
         </form>
     </md-card>
 
-<div id=main-grid> <!--this sets up the grid layout for columns *VIP-->
+<div id="main-grid"> <!--this sets up the grid layout for columns *VIP-->
 
     <div id="left-col"> LEFT COL where i want search <!--this sets up the left column-->
    
-    <md-card class="city-card"
-    *ngFor= "let city of favoriteCity"> <!--the md-card is the grey card which displays each citie's weather info-->
-        
-    </md-card>
-    
+        <md-card class="city-card"
+        *ngFor= "let city of favoriteCity"> <!--the md-card is the grey card which displays each citie's weather info-->
+            
+        </md-card>
       
     </div>
         
@@ -45,3 +42,4 @@
         
         </md-card>
     </div>
+</div>

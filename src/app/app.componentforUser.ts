@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable } from "rxjs/Observable";
 import { WeatherService } from './weather.service';
 import { expressService } from './express-service';
 import { Http } from '@angular/http';
 import { UserService } from './user.service';
-
 const mockData = [
     {
     "display_location":{
@@ -44,7 +43,7 @@ const mockData = [
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponentUsers {
  
   title = ' Weather App';
   weatherData = mockData;
@@ -59,8 +58,18 @@ export class AppComponent {
       password: "merp"
   }
   
-    constructor( public weather$: WeatherService, public user$: UserService ){ 
-          console.log(this.weather$.foo);
+  constructor(public user$: UserService, public weather$: WeatherService ){ //
+      
+  }
+  
+  ngOnInit() //automatically executes
+  {
+      this.user$.register(this.user)
+      .subscribe( res => console.log("res", res) )
+  }
+  
+  searchin() {
+          //console.log(this.weather$.foo);
           this.weather$.getWeatherData( this.city )
           .subscribe(
               data => {
@@ -68,22 +77,15 @@ export class AppComponent {
                   console.log("searchResult", this.searchResult);
               }
               )
-            console.log(this.weather$.foo)
+            //console.log(this.weather$.foo)
     }
-    
-    ngOnInit() //automatically executes
-  {
-      this.user$.register(this.user)
-      .subscribe( res => console.log("res", res) )
-  }
-    
     addFavoriteCity(city) {
         this.favoriteCities.push(city)
-        console.log(this.favoriteCities, city);
+        //console.log(this.favoriteCities, city);
     }
     //in this function we are using two-way data binding for the search bar
     citySearch( searchValue) { 
-        console.log("hit", this.city)
+        //console.log("hit", this.city)
         this.weather$.getWeatherData( searchValue )
         .subscribe(
             data => { //creating a variable called data for the response we are getting back
@@ -91,7 +93,7 @@ export class AppComponent {
                 //if you look at the console.log you will see the same property in the data we got back.
                 //from there you can use interpolation to display data from the object in the html
                 this.searchResult = data.current_observation
-                console.log("response", data)
+                //console.log("response", data)
             }
         )
     }
