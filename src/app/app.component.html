@@ -14,12 +14,32 @@
 
     <div id="left-col"> LEFT COL where i want search <!--this sets up the left column-->
    
-        <md-card class="city-card"
+       <!-- <md-card class="city-card"
         *ngFor= "let city of favoriteCity"> <!--the md-card is the grey card which displays each citie's weather info-->
-            
-        </md-card>
-      
+         
+   <form class="container" #registerForm="ngForm" (ngSubmit)="signupForm(registerForm)" novalidate>
+      <md-form-field>
+        <input placeholder= "Email" name="email" [(ngModel)]="user.email" type="email" mdInput required>
+      </md-form-field>
+ 
+      <md-form-field>
+        <input placeholder="First Name" name="firstName" [(ngModel)]="user.firstName" type="string" mdInput required >
+      </md-form-field>
+
+      <md-form-field>
+        <input placeholder="Last Name" name="lastName" [(ngModel)]="user.lastName" type="string" mdInput required >
+      </md-form-field>
+
+      <md-form-field>
+        <input placeholder="Password" name="password" [(ngModel)]="user.password" type="password" mdInput required >
+      </md-form-field>
+ 
+      <button type="submit" class="btn btn-success">Submit</button>
+ 
+        </form>
     </div>
+
+     
         
     <div id="center-col"> CENTER Col List of Cities
     
@@ -42,4 +62,6 @@
         
         </md-card>
     </div>
+
+
 </div>

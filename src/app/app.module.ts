@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import {FormsModule, 
         ReactiveFormsModule, 
         NgModel } from '@angular/forms';
+import { RouterModule }   from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +26,13 @@ import {FormsModule,
     HttpModule,
     MdInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+    {
+      path: '',
+      component: AppComponent
+      }
+  ])
   ],
   providers: [WeatherService,
   expressService,
