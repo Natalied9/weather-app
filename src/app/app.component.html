@@ -5,7 +5,9 @@
             <md-form-field class="example-full-width">
                  <input  #search [(ngModel)]="city" mdInput 
             placeholder="Search for A City"
-            (keyup.enter)="citySearch( search.value )">
+           (keyup.enter)="citySearch( search.value )"
+            >
+            
             </md-form-field> 
         </form>
     </md-card>
@@ -23,10 +25,6 @@
     </div>
         
     <div id="center-col"> CENTER Col List of Cities
-
-     
-
- 
     
         <md-card class="city-card" 
         *ngFor="let city of weatherData"

@@ -55,7 +55,7 @@ export class AppComponent {
           this.weather$.getWeatherData( this.city )
           .subscribe(
               data => {
-                  this.searchResult = data
+                  this.searchResult = data.response.results
                   console.log("searchResult", this.searchResult);
               }
               )
@@ -66,11 +66,14 @@ export class AppComponent {
         console.log(this.favoriteCities, city);
     }
     //in this function we are using two-way data binding for the search bar
-    citySearch(searchValue) { 
-        console.log("hit", searchValue)
+    citySearch( searchValue) { 
+        console.log("hit", this.city)
         this.weather$.getWeatherData( searchValue )
         .subscribe(
-            data => {
+            data => { //creating a variable called data for the response we are getting back
+                //here we are assiging the value from our response to the current_observation property. 
+                //if you look at the console.log you will see the same property in the data we got back.
+                //from there you can use interpolation to display data from the object in the html
                 this.searchResult = data.current_observation
                 console.log("response", data)
             }
