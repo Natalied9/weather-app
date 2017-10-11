@@ -49,3 +49,26 @@
 .example-full-width {
   width: 100%;
 }
+
+.container {
+  display: flex;
+  flex-direction: column; 
+  width: 500px;
+  background-color: #596f79;
+  align-items: center;
+  margin: 10 auto;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.md-form-field-infix{
+  background-color: green;
+}
+#id{
+  background-color: gray;
+}
+md-form-field{
+  color: black;
+}
