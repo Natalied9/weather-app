@@ -8,7 +8,9 @@ import {
   MdFormFieldModule, 
   MdInputModule, 
   MdCardModule,
-  MD_PLACEHOLDER_GLOBAL_OPTIONS}  from '@angular/material';
+  MD_PLACEHOLDER_GLOBAL_OPTIONS,
+  MdDatepickerModule
+}  from '@angular/material';
 import { WeatherService } from './weather.service';
 import { UserService } from './user.service';
 import { expressService } from './express-service';
@@ -27,6 +29,7 @@ import { MainComponent } from './main/main.component';
     AppComponent, LoginComponent, RegisterComponent, MainComponent
   ],
   imports: [
+    MdDatepickerModule,
     BrowserModule,
     BrowserAnimationsModule,
     MdToolbarModule,
@@ -36,6 +39,7 @@ import { MainComponent } from './main/main.component';
     MdFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    
     RouterModule.forRoot([
    /*We define our routes here. The empty string below, in path "" is our base endpoint with nothing in it.
    Below is the component view that will load when the route changes. Remember in our app.component.html 

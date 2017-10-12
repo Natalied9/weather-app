@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   user: object ={}
   constructor( public user$: UserService, public router: Router) { }
   //returnUrl is a variable to set the route upon successful response from our server, See line 53 of this file
-  returnUrl: string = "lobby"  
+  returnUrl: string = "main"  
 
   ngOnInit() {
 

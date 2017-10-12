@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
   user: object ={}
   //returnUrl is a variable to set the route upon successful response from our server, See line 44 below
-  returnUrl: string = "lobby"
+  returnUrl: string = "main"
 
   constructor( public user$: UserService, public router: Router ) { }
   /*
