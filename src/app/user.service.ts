@@ -1,15 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from "rxjs/Observable";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class UserService {
-    url: string = 'http://natalie-fall-2017-phortonssf.c9users.io:8080/api/AppUsers'; //double check the path
-    constructor( public http: Http ) { }
+  /* Variable url is the path to my server yours will have your name in front of fall 
+for example     https://<studentname>-fall-2017-phortonssf.c9users.io:8080/api/AppUsers 
+*/
+   url: string = "https://fall-2017-phortonssf.c9users.io:8080/api/AppUsers";    
+  constructor(public http: Http) { }
 
-    register( user ){ //second parameter user 
-        return this.http.post ( this.url, user) //posts the user data to the above url 
-        .map( res => res.json()) 
+/*Function to register our user. Takes in one paramter which is a user object and sends it
+  to the url above. The login function is invoked in the register component.
+*/
+  register( user){
+     return this.http.post( this.url, user)
+        .map( res => res.json())
+  }  
+
+
+/*Function to login our user. Takes in one paramter which is a user object and sends it
+  to the url above. The login function is invoked in the login component.
+*/
+   login( user ){
+     console.log("hit $",user)
+     return this.http.post( this.url + '/login', user)
+        .map( res => res.json())
+  }      
+    
 }
-}
+
+

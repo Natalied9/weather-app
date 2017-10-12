@@ -1,0 +1,74 @@
+.city-card{
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+#main-grid {
+    background-color: rgb(23, 23, 141, .13);
+    margin: 0 auto;
+    height:85vh;
+    max-width: 900px;
+    width:100vw;
+    display: grid;
+
+    grid-column: 2;
+    grid-template-rows: 20px repeat( 5, 20% );
+}
+
+#left-col {
+    color: black;
+    background-color: black;
+    padding: 5px;
+        /* autoprefixer: off */
+    grid-column: 2;
+    grid-row: 2 / 5; 
+}    
+
+#center-col {
+        /* autoprefixer: off */
+    grid-column: 3;
+    grid-row: 2 / 5; 
+    background: green;
+}  
+
+#right-col {
+        /* autoprefixer: off */
+    padding: 5px;
+    grid-column: 4;
+    grid-row: 2 / 5; 
+    background: blue;
+}  
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; 
+  width: 500px;
+  background-color: #596f79;
+  align-items: center;
+  margin: 10 auto;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.md-form-field-infix{
+  background-color: green;
+}
+#id{
+  background-color: gray;
+}
+md-form-field{
+  color: black;
+}

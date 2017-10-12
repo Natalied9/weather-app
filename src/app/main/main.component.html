@@ -1,0 +1,48 @@
+<md-toolbar color="primary"> {{ title }} </md-toolbar>
+
+    <md-card>
+       <form class="example-form">
+            <md-form-field class="example-full-width">
+                 <input #search [(ngModel)]="city" [ngModelOptions]="{standalone: true}" mdInput 
+            placeholder="Search for A City"
+           (keyup.enter)="citySearch( search.value )"/>
+            </md-form-field> 
+        </form>
+    </md-card>
+
+<div id="main-grid"> <!--this sets up the grid layout for columns *VIP-->
+
+    <div id="left-col"> LEFT COL Log In: <!--this sets up the left column-->
+   
+       <!-- <md-card class="city-card"
+        *ngFor= "let city of favoriteCity"> <!--the md-card is the grey card which displays each citie's weather info-->
+         
+  
+    </div>
+
+     
+        
+    <div id="center-col"> CENTER Col List of Cities
+    
+        <md-card class="city-card" 
+        *ngFor="let city of weatherData"
+        (click)="addFavoriteCity(city)">
+        {{ city.display_location.full }} {{ city.temp_f }} <br>
+        Temp. {{ city.temp_f }}
+        </md-card>
+        
+    </div>
+    
+    <div id="right-col"> RIGHT COL Favorite Cities 
+    
+        <md-card class="city-card"
+       *ngFor="let city of favoriteCities;"
+        (click)="addFavoriteCities(city)">
+        {{ city.display_location.full }} {{ city.temp_f }} <br>
+        Temp. {{ city.temp_f }}
+        
+        </md-card>
+    </div>
+
+
+</div>
