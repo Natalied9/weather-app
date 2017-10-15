@@ -60,31 +60,31 @@ export class MainComponent { //what does my component do?
       password: "merp"
   }
   
-    constructor( public weather$: WeatherService, public user$: UserService ){ 
-        //   console.log(this.weather$.foo);
-        //   this.weather$.getWeatherData( this.city )
-        //   .subscribe(
-        //       data => {
-        //           this.searchResult = data.response.results
-        //           console.log("searchResult", this.searchResult);
-        //       }
-        //       )
-        //     console.log(this.weather$.foo)
-    }
+    constructor( public weather$: WeatherService, public user$: UserService ){ }
     //automatically executes
     ngOnInit() {}
     
-    iterate(city) { //trying to display the search input to a md card on the right column
-        for (var citysel in this.favoriteCities) {
-            if (citysel == this.city) {  
-                console.log("city exists");
-        }
+    
+    removeFromFavoriteList(index) {
+        console.log(index, "this is index");
+        this.favoriteCities.splice(index,1);
     }
-    }
+    
+    // removeFromFavoriteList(city, index, array) {
+    //  return ( );
+    // }
+    
+    // retval = favoriteCities.some(removeFromFavoriteList);
+   
+    //function isBigEnough(element, index, array) { 
+//   return (element >= 10); 
+//} 
+//var retval = [2, 5, 8, 1, 4].some(isBigEnough);
+//console.log("Returned value is : " + retval );
+    
     addFavoriteCity(city) {
         this.favoriteCities.push(city);
-        this.iterate(city)
-        console.log(this.favoriteCities, city);
+        console.log("this function fav is working", city);
     }
     //in this function we are using two-way data binding for the search bar
     citySearch( searchValue) { 

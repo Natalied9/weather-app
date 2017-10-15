@@ -25,55 +25,31 @@
 
         <md-card class="city-card" 
        
-        *ngFor="let data of searchResult"> 
-        {{ data.display_location.full }}
-        {{ data.UV }}
+        *ngFor="let data of searchResult"
+        (click)="addFavoriteCity(data)"> 
+        {{ data.display_location.full }} <br>
+        Temp. {{ data.feelslike_f }}
+        </md-card> <!--using interpolation to display data from the object in the html 
+            from our search result and then clicking the card to add it to the favorite list-->
 
-       <!-- above is proper below is wrong. you need to access the current
-       item or index of the array with data then the property.
-       -->
-        <!--{{response.current_observation.estimated.feelslike_f}} -->
-        <!--{{current_observation.estimated.feelslike_f}}-->
-        <!--{{ data.current_observation.display_location.full}}-->
-
-        </md-card> <!--trying to use interpolation to display data from the object in the html 
-            from our search result-->
-            
-        <!--  <md-form-field>-->
-        <!--  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">-->
-        <!--  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
-        <!--  <md-datepicker #picker></md-datepicker>-->
-        <!--</md-form-field>-->
-
-       <img md-card-image src="./moviefilmstrip.png" alt="Photo of film strip should be here">
-          <!--  {{ city.display_location.full }} -->
+       <img md-card-image src="./assets/moviefilmstrip.png" alt="Photo of film strip should be here">
  <!--the md-card is the grey card which displays each citie's weather info, here I am trying to display the search through interlopation-->
-    
-
-    </div>
-
-
+        </div>
 
     <div id="center-col"> CENTER Col List of Cities
-        <img md-card-image src="./moviefilmstrip.png" alt="Photo of film strip should be here">
-        <md-card class="city-card" 
-            *ngFor="let city of weatherData" 
-            (click)="addFavoriteCity(city)">
-            {{ city.display_location.full }} {{ city.temp_f }} 
-            <br> 
-            Temp. {{ city.temp_f }}
-        </md-card>
-        <!--goes through mock weather data for testing-->
-
+        <img  md-card-image src="./assets/moviefilmstrip.png" alt="Photo of film strip should be here">
     </div>
 
     <div id="right-col"> RIGHT COL Favorite Cities
 
-        <md-card class="city-card" *ngFor="let city of favoriteCities;" 
+        <md-card class="city-card" *ngFor="let city of favoriteCities; let i = index" 
         (click)="addFavoriteCities(city)">
             {{ city.display_location.full }} {{ city.temp_f }} <br> Temp. {{ city.temp_f }}
-        <!--want to add a delete button on the weather card so the user can remove from the 
-        favorites list button md-raised-button color="primary" type="submit" class="btn btn-success">Delete</button-->
+         
+           <button (click)="removeFromFavoriteList(i)">Remove from favorites</button> 
+           <!--md-raised-button color="primary" type="submit" class="btn btn-success">Remove from favorites</button> 
+           I want to add a delete button on the weather card so the user can remove from the 
+        favorites list-->
         </md-card>
         <!--when the user clicks on a weather card, then that card is added to the favorite cities column"-->
     </div>
