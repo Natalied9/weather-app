@@ -15,6 +15,7 @@ for example     https://<studentname>-fall-2017-phortonssf.c9users.io:8080/api/A
   to the url above. The login function is invoked in the register component.
 */
   register( user){
+         console.log("hit $",user)
      return this.http.post( this.url, user)
         .map( res => res.json())
   }  

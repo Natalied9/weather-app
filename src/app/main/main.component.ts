@@ -5,6 +5,8 @@ import { WeatherService } from '../weather.service';
 import { expressService } from '../express-service';
 import { Http } from '@angular/http';
 import { UserService } from '../user.service';
+import {MdIconModule} from '@angular/material';
+import {MdCardModule} from '@angular/material';
 
 const mockData = [
     {
@@ -77,8 +79,16 @@ export class MainComponent { //what does my component do?
       .subscribe( res => console.log("res", res) )
   }
     
+    iterate(city) { //trying to display the search input to a md card on the right column
+        for (var citysel in this.favoriteCities) {
+            if (citysel == this.city) {  
+                console.log("city exists");
+        }
+    }
+    }
     addFavoriteCity(city) {
-        this.favoriteCities.push(city)
+        this.favoriteCities.push(city);
+        this.iterate(city)
         console.log(this.favoriteCities, city);
     }
     //in this function we are using two-way data binding for the search bar

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {MdButtonModule} from '@angular/material';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login', 
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

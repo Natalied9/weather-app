@@ -1,7 +1,15 @@
 <!-- Below on the form element #loginForm is creating a variable on the html, javascript equivlant would be 
 var loginFrom = <form></form>; the # lets use reference the element with by a variable name and use it in our html. 
 -->
+<div class="wrapper">
 
+<div class="container">
+
+</div>
+<!--end container-->
+</div>
+<!--end wrapper-->
+    
  <form class="container-form" #loginForm="ngForm" (ngSubmit)="signupForm(loginForm)" novalidate>
      
       <md-form-field  color='warn'>
@@ -14,7 +22,7 @@ var loginFrom = <form></form>; the # lets use reference the element with by a va
         <input placeholder="Password" name="password" [(ngModel)]="user.password" type="password" mdInput required >
       </md-form-field>
  
-      <button md-raised-button color="primary" type="submit" class="btn btn-success">Submit</button>
+      <button md-button color="primary" type="submit" class="btn btn-success">Submit</button>
  
     </form>
 
@@ -24,3 +32,5 @@ var loginFrom = <form></form>; the # lets use reference the element with by a va
  <div class="center">
    <a routerLink="/register" routerLinkActive="active"> Need An Account?</a>
  <div>
+     
+     
