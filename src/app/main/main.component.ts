@@ -49,7 +49,7 @@ export class MainComponent { //what does my component do?
  
   title = ' Weather App';
   weatherData = mockData;
-  searchResult: any; 
+  searchResult: any = [];
   favoriteCities = []; //an empty array we will add onto with a user click
   city: string = "";
   
@@ -61,22 +61,18 @@ export class MainComponent { //what does my component do?
   }
   
     constructor( public weather$: WeatherService, public user$: UserService ){ 
-          console.log(this.weather$.foo);
-          this.weather$.getWeatherData( this.city )
-          .subscribe(
-              data => {
-                  this.searchResult = data.response.results
-                  console.log("searchResult", this.searchResult);
-              }
-              )
-            console.log(this.weather$.foo)
+        //   console.log(this.weather$.foo);
+        //   this.weather$.getWeatherData( this.city )
+        //   .subscribe(
+        //       data => {
+        //           this.searchResult = data.response.results
+        //           console.log("searchResult", this.searchResult);
+        //       }
+        //       )
+        //     console.log(this.weather$.foo)
     }
-    
-    ngOnInit() //automatically executes
-  {
-      this.user$.register(this.user)
-      .subscribe( res => console.log("res", res) )
-  }
+    //automatically executes
+    ngOnInit() {}
     
     iterate(city) { //trying to display the search input to a md card on the right column
         for (var citysel in this.favoriteCities) {
@@ -95,11 +91,12 @@ export class MainComponent { //what does my component do?
         console.log("hit", this.city)
         this.weather$.getWeatherData( searchValue )
         .subscribe(
-            data => { //creating a variable called data for the response we are getting back
+            data => { 
+                //creating a variable called data for the response we are getting back
                 //here we are assiging the value from our response to the current_observation property. 
                 //if you look at the console.log you will see the same property in the data we got back.
                 //from there you can use interpolation to display data from the object in the html
-                this.searchResult = data.current_observation
+                this.searchResult.push( data.current_observation) //adds out data onto the array of the mdcard?
                 console.log("response", data)
             }
         )

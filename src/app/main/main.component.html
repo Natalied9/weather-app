@@ -8,8 +8,6 @@
             <input #search [(ngModel)]="city" [ngModelOptions]="{standalone: true}" 
             mdInput placeholder="Search for A City" (keyup.enter)="citySearch( search.value )" 
             />
-            <!-- {{data}} trying to use interpolation to display data from the object in the html 
-            from our search result-->
 
             <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
             <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
@@ -25,6 +23,22 @@
     <div id="left-col"> LEFT COL
         <!--this sets up the left column-->
 
+        <md-card class="city-card" 
+       
+        *ngFor="let data of searchResult"> 
+        {{ data.display_location.full }}
+        {{ data.UV }}
+
+       <!-- above is proper below is wrong. you need to access the current
+       item or index of the array with data then the property.
+       -->
+        <!--{{response.current_observation.estimated.feelslike_f}} -->
+        <!--{{current_observation.estimated.feelslike_f}}-->
+        <!--{{ data.current_observation.display_location.full}}-->
+
+        </md-card> <!--trying to use interpolation to display data from the object in the html 
+            from our search result-->
+            
         <!--  <md-form-field>-->
         <!--  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">-->
         <!--  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
@@ -41,9 +55,13 @@
 
 
     <div id="center-col"> CENTER Col List of Cities
-
-        <md-card class="city-card" *ngFor="let city of weatherData" (click)="addFavoriteCity(city)">
-            {{ city.display_location.full }} {{ city.temp_f }} <br> Temp. {{ city.temp_f }}
+        <img md-card-image src="./moviefilmstrip.png" alt="Photo of film strip should be here">
+        <md-card class="city-card" 
+            *ngFor="let city of weatherData" 
+            (click)="addFavoriteCity(city)">
+            {{ city.display_location.full }} {{ city.temp_f }} 
+            <br> 
+            Temp. {{ city.temp_f }}
         </md-card>
         <!--goes through mock weather data for testing-->
 
