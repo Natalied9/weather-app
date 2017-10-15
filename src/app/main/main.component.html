@@ -2,16 +2,19 @@
 
 <md-card>
     <a><md-icon>home</md-icon></a>
+    <!--this will be my search icon-->
     <form class="example-form">
         <md-form-field class="example-full-width">
             <input #search [(ngModel)]="city" [ngModelOptions]="{standalone: true}" 
             mdInput placeholder="Search for A City" (keyup.enter)="citySearch( search.value )" 
             />
-            <!-- {{data}} -->
+            <!-- {{data}} trying to use interpolation to display data from the object in the html 
+            from our search result-->
 
             <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
             <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
             <md-datepicker #picker></md-datepicker>
+            <!--this is a date picker I need to link data to-->
         </md-form-field>
     </form>
 </md-card>
@@ -42,6 +45,7 @@
         <md-card class="city-card" *ngFor="let city of weatherData" (click)="addFavoriteCity(city)">
             {{ city.display_location.full }} {{ city.temp_f }} <br> Temp. {{ city.temp_f }}
         </md-card>
+        <!--goes through mock weather data for testing-->
 
     </div>
 
@@ -50,8 +54,10 @@
         <md-card class="city-card" *ngFor="let city of favoriteCities;" 
         (click)="addFavoriteCities(city)">
             {{ city.display_location.full }} {{ city.temp_f }} <br> Temp. {{ city.temp_f }}
-
+        <!--want to add a delete button on the weather card so the user can remove from the 
+        favorites list button md-raised-button color="primary" type="submit" class="btn btn-success">Delete</button-->
         </md-card>
+        <!--when the user clicks on a weather card, then that card is added to the favorite cities column"-->
     </div>
 
 

@@ -5,8 +5,7 @@ import { WeatherService } from '../weather.service';
 import { expressService } from '../express-service';
 import { Http } from '@angular/http';
 import { UserService } from '../user.service';
-import {MdIconModule} from '@angular/material';
-import {MdCardModule} from '@angular/material';
+import {MdIconModule, MdCardModule} from '@angular/material';
 
 const mockData = [
     {
