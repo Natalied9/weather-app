@@ -1,12 +1,12 @@
 <md-toolbar color="primary"> {{ title }} </md-toolbar>
 
 <md-card>
-    <a><md-icon>home</md-icon></a>
+    <i class="material-icons">search</i>
     <!--this will be my search icon-->
     <form class="example-form">
         <md-form-field class="example-full-width">
-            <input #search [(ngModel)]="city" [ngModelOptions]="{standalone: true}" 
-            mdInput placeholder="Search for A City" (keyup.enter)="citySearch( search.value )" 
+            <input #search [(ngModel)]="movie" [ngModelOptions]="{standalone: true}" 
+            mdInput placeholder="Search for A Movie" (keyup.enter)="movieSearch( search.value )" 
             />
 
             <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
@@ -20,38 +20,36 @@
 <div id="main-grid">
     <!--this sets up the grid layout for columns *VIP-->
 
-    <div id="left-col"> LEFT COL
+    <div id="left-col"> LEFT COL: Search Result
         <!--this sets up the left column-->
 
-        <md-card class="city-card" 
+        <md-card class="movie-card" 
        
         *ngFor="let data of searchResult"
-        (click)="addFavoriteCity(data)"> 
-        {{ data.display_location.full }} <br>
-        Temp. {{ data.feelslike_f }}
+        (click)="addFavoriteMovie(data)"> 
+        Movie Title: {{ data.title }} <br>
+         
         </md-card> <!--using interpolation to display data from the object in the html 
             from our search result and then clicking the card to add it to the favorite list-->
 
-       <img md-card-image src="./assets/moviefilmstrip.png" alt="Photo of film strip should be here">
- <!--the md-card is the grey card which displays each citie's weather info, here I am trying to display the search through interlopation-->
+      
+ <!--the md-card is the grey card which displays each citie's movie info, here I am trying to display the search through interlopation-->
         </div>
 
-    <div id="center-col"> CENTER Col List of Cities
-        <img  md-card-image src="./assets/moviefilmstrip.png" alt="Photo of film strip should be here">
-    </div>
+ 
 
-    <div id="right-col"> RIGHT COL Favorite Cities
+    <div id="right-col"> RIGHT COL Favorite Movies
 
-        <md-card class="city-card" *ngFor="let city of favoriteCities; let i = index" 
-        (click)="addFavoriteCities(city)">
-            {{ city.display_location.full }} {{ city.temp_f }} <br> Temp. {{ city.temp_f }}
+        <md-card class="movie-card" *ngFor="let movie of favoriteMovies; let i = index" 
+        (click)="addfavoriteMovies(movie)">
+            Movie Title: {{ movie.title }} <br> 
          
-           <button (click)="removeFromFavoriteList(i)">Remove from favorites</button> 
+           <button md-raised-button color="primary" type="submit" class="btn btn-success" (click)="removeFromFavoriteList(i)">Remove from favorites</button> 
            <!--md-raised-button color="primary" type="submit" class="btn btn-success">Remove from favorites</button> 
-           I want to add a delete button on the weather card so the user can remove from the 
+           I want to add a delete button on the movie card so the user can remove from the 
         favorites list-->
         </md-card>
-        <!--when the user clicks on a weather card, then that card is added to the favorite cities column"-->
+        <!--when the user clicks on a movie card, then that card is added to the favorite cities column"-->
     </div>
 
 

@@ -14,7 +14,7 @@ import {
    // added this here a service for the date picker and line 70 --Peter
    MdDatepickerIntl
 }  from '@angular/material';
-import { WeatherService } from './weather.service';
+import { movieService } from './movie.service';
 import { UserService } from './user.service';
 import { expressService } from './express-service';
 import { HttpModule } from '@angular/http';
@@ -66,7 +66,7 @@ import { MainComponent } from './main/main.component';
      }
 
  ])],
-  providers: [WeatherService,
+  providers: [movieService,
   MdDatepickerIntl,
   expressService,
   UserService, {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'auto'}}],

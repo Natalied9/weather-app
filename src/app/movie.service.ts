@@ -4,16 +4,18 @@ import 'rxjs/add/operator/map';
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class WeatherService {
+export class movieService {
         foo: string = "Hello World";
+        apiKey: string = "922279a192b8268ef5e427077ea63871"; 
   constructor( public http: Http ) { }
   
-        getWeatherData( searchValue ) {
-                return this.http.get('https://api.wunderground.com/api/9759de9e6b2402b9/conditions/q/CA/' + searchValue + '.json')
+        getmovieData( searchValue ) {
+                                   // https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
+                return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey + '&query=' + searchValue)
                 .map( res => res.json())
         }
         
-        //postWeather(){
+        //postmovie(){
             //return this.http.post( this.ourUrl, {name: "f0obar", temp_f:77})
             // .map( data => data.json() )
         //}

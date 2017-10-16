@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable } from "rxjs/Observable";
-import { WeatherService } from '../weather.service';
+import { movieService } from '../movie.service';
 import { expressService } from '../express-service';
 import { Http } from '@angular/http';
 import { UserService } from '../user.service';
@@ -13,28 +13,28 @@ const mockData = [
         "full": "San Francisco, CA"
         },
         "temp_f": 66.3,
-        "weather": "Partly Cloudy",
+        "movie": "Partly Cloudy",
         "relative_humidity": "65%"
     }, {
     "display_location":{
        "full": "San Diego, CA"
         },
     "temp_f": 80,
-    "weather": "Sunny",
+    "movie": "Sunny",
     "relative_humidity": "30%"
     }, {
     "display_location":{
        "full": "Seattle, WA"
         },
     "temp_f": 50,
-    "weather": "Rain",
+    "movie": "Rain",
     "relative_humidity": "100%"
     }, {
     "display_location":{
        "full": "Las Vegas, NV"
         },
     "temp_f": 105,
-    "weather": "Hot",
+    "movie": "Hot",
     "relative_humidity": "5%"
     }
 ]
@@ -47,11 +47,11 @@ const mockData = [
 
 export class MainComponent { //what does my component do? 
  
-  title = ' Weather App';
-  weatherData = mockData;
+  title = 'Movie App';
+  movieData = mockData;
   searchResult: any = [];
-  favoriteCities = []; //an empty array we will add onto with a user click
-  city: string = "";
+  favoriteMovies = []; //an empty array we will add onto with a user click
+  movie: string = "";
   
   user: any = {
       email: "example@gmail.com",
@@ -60,21 +60,21 @@ export class MainComponent { //what does my component do?
       password: "merp"
   }
   
-    constructor( public weather$: WeatherService, public user$: UserService ){ }
+    constructor( public movie$: movieService, public user$: UserService ){ }
     //automatically executes
     ngOnInit() {}
     
     
     removeFromFavoriteList(index) {
         console.log(index, "this is index");
-        this.favoriteCities.splice(index,1);
+        this.favoriteMovies.splice(index,1);
     }
     
-    // removeFromFavoriteList(city, index, array) {
+    // removeFromFavoriteList(movie, index, array) {
     //  return ( );
     // }
     
-    // retval = favoriteCities.some(removeFromFavoriteList);
+    // retval = favoriteMovies.some(removeFromFavoriteList);
    
     //function isBigEnough(element, index, array) { 
 //   return (element >= 10); 
@@ -82,21 +82,21 @@ export class MainComponent { //what does my component do?
 //var retval = [2, 5, 8, 1, 4].some(isBigEnough);
 //console.log("Returned value is : " + retval );
     
-    addFavoriteCity(city) {
-        this.favoriteCities.push(city);
-        console.log("this function fav is working", city);
+    addFavoriteMovie(movie) {
+        this.favoriteMovies.push(movie);
+        console.log("this function fav is working", movie);
     }
     //in this function we are using two-way data binding for the search bar
-    citySearch( searchValue) { 
-        console.log("hit", this.city)
-        this.weather$.getWeatherData( searchValue )
+    movieSearch( searchValue) { 
+        console.log("hit", this.movie)
+        this.movie$.getmovieData( searchValue )
         .subscribe(
             data => { 
                 //creating a variable called data for the response we are getting back
                 //here we are assiging the value from our response to the current_observation property. 
                 //if you look at the console.log you will see the same property in the data we got back.
                 //from there you can use interpolation to display data from the object in the html
-                this.searchResult.push( data.current_observation) //adds out data onto the array of the mdcard?
+                this.searchResult = data.results //adds out data onto the array of the mdcard?
                 console.log("response", data)
             }
         )
